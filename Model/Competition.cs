@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class Competition
+    public class Competition
     {
         public Competition()
         {

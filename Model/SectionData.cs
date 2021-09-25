@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class SectionData
+    public class SectionData
     {
         public IParticipant Left { set; get; }
         public int DistanceLeft { set; get; }
