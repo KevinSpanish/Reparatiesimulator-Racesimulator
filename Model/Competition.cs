@@ -17,7 +17,11 @@ namespace Model
 
         public Track NextTrack()
         {
-            return null;
+            if (Tracks.Count == 0)
+            {
+                return null;
+            }
+            return Tracks.Dequeue();
         }
     }
 }
