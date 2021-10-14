@@ -1,14 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Model
 {
     public class Driver : IParticipant
     {
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Points { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IEquipment Equipment { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IParticipant.TeamColors TeamColor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Driver(string name, int points, IEquipment equipment, IParticipant.TeamColors teamColor)
+        {
+            Name = name;
+            Points = points;
+            Equipment = equipment;
+            TeamColor = teamColor;
+        }
+
+        public string Name { get; set; }
+        public int Points { get; set; }
+        public IEquipment Equipment { get; set; }
+        public IParticipant.TeamColors TeamColor { get; set; }
     }
 }

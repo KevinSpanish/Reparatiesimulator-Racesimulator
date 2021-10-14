@@ -21,9 +21,9 @@ namespace Controller
 
         public static void AddParticipants()
         {
-            Competition.Participants.Add(new Driver());
-            Competition.Participants.Add(new Driver());
-            Competition.Participants.Add(new Driver());
+            Competition.Participants.Add(new Driver("Huey", 0, new Car(), IParticipant.TeamColors.Red));
+            Competition.Participants.Add(new Driver("Dewey", 0, new Car(), IParticipant.TeamColors.Blue));
+            Competition.Participants.Add(new Driver("Louie", 0, new Car(), IParticipant.TeamColors.Green));
         }
 
         public static void AddTracks()
