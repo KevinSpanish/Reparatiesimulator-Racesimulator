@@ -9,9 +9,8 @@ namespace Racesimulator
         static void Main(string[] args)
         {
             Data.Initialize();
-            Data.NextRace();
-            //Console.WriteLine(Data.CurrentRace.Track.Name);
-            Visualisation.DrawTrack(Data.CurrentRace.Track);
+
+            Visualization.Initialize();
 
             while (true)
             {

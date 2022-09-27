@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Model
 {
     public interface IEquipment
     {
-        public int Quality { get; set; }
-        public int Preformance { get; set; }
-        public int Speed { get; set; }
-        public bool IsBroken { get; set; }
+        int Quality { get; set; }
+        int Performance { get; set; }
+        int Speed { get; set; }
+        bool IsBroken { get; set; }
     }
 }

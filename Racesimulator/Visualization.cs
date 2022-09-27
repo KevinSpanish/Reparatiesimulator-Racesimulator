@@ -1,13 +1,14 @@
-﻿using Controller;
-using Model;
+﻿using Model;
+using Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Racesimulator
 {
-    public class Visualisation
+    public class Visualization
     {
         #region graphics
 
@@ -15,16 +16,32 @@ namespace Racesimulator
             {
             "----",
             " 1|#",
-            "2 |#",
+            "2|# ",
+            "----"
+        };
+
+        private static string[] _finishHorizontalInv =
+            {
+            "----",
+            "#|1 ",
+            " #|2",
             "----"
         };
 
         private static string[] _finishVertical =
             {
             "|##|",
-            "|--|",
+            "|- |",
             "|1 |",
             "| 2|"
+        };
+
+        private static string[] _finishVerticalInv =
+            {
+            "|  |",
+            "|2 |",
+            "| 1|",
+            "|##|"
         };
 
         private static string[] _startHorizontal =
@@ -32,6 +49,14 @@ namespace Racesimulator
             "----",
             "  1|",
             " 2| ",
+            "----"
+        };
+
+        private static string[] _startHorizontalInv =
+            {
+            "----",
+            "|2  ",
+            " |1 ",
             "----"
         };
 
@@ -43,6 +68,14 @@ namespace Racesimulator
             "|  |"
         };
 
+        private static string[] _startVerticalInv =
+            {
+            "|  |",
+            "| 1|",
+            "|2-|",
+            "|- |"
+        };
+
         private static string[] _straightHorizontal =
             {
             "----",
@@ -51,11 +84,27 @@ namespace Racesimulator
             "----"
         };
 
+        private static string[] _straightHorizontalInv =
+            {
+            "----",
+            "  2 ",
+            " 1  ",
+            "----"
+        };
+
         private static string[] _straightVertical =
             {
             "|  |",
             "|1 |",
             "| 2|",
+            "|  |"
+        };
+
+        private static string[] _straightVerticalInv =
+            {
+            "|  |",
+            "|2 |",
+            "| 1|",
             "|  |"
         };
 
@@ -78,27 +127,43 @@ namespace Racesimulator
         private static string[] _corner2 =
             {
             "----",
-            " 1 |",
-            "  2|",
+            "  1|",
+            " 2 |",
             "|  |"
         };
 
         private static string[] _corner3 =
             {
             "|  |",
-            " 1 |",
-            "  2|",
+            " 2 |",
+            "  1|",
             "---|"
         };
 
         #endregion
 
+        public static void Initialize()
+        {
+            Console.WriteLine($"Track: {Data.CurrentRace.Track.Name}");
+            Console.WriteLine($"{Data.CurrentRace.Track.Rounds} rondjes");
+
+            Data.CurrentRace.DriversChanged += OnDriversChanged;
+
+            Track track = Data.CurrentRace.Track;
+            DrawTrack(track);
+        }
+
         public static void DrawTrack(Track track)
         {
             int direction = 1; // 0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT
 
-            int verticalPosition = 4;    //Add small margin,
+            int verticalPosition = 5;    //Add small margin,
             int horizontalPosition = 10; // otherwhise everything is so stuck to the edge
+
+            //TODO: Sections are not rotated correctly, a straight horizontal section places the participants wrongly 
+            //      when the section is placed. This is probably because it uses the same section graphic as a normal horizontal piece.
+            //      Can potentially be fixed by making a section graphic for every rotation (or just an inverted) and switch to this
+            //      depening on the direction.
 
             for (int i = 0; i < track.Sections.Count; i++)
             {
@@ -110,7 +175,8 @@ namespace Racesimulator
                 {
                     case "StartGrid":
 
-                        for (int j = 0; j < 4; j++) {
+                        for (int j = 0; j < 4; j++)
+                        {
                             Console.SetCursorPosition(horizontalPosition, verticalPosition + j);
 
                             if (direction % 2 == 0)
@@ -220,7 +286,8 @@ namespace Racesimulator
                             else { horizontalPosition -= 4; }
 
                         }
-                        else { 
+                        else
+                        {
                             for (int j = 0; j < 4; j++)
                             {
                                 Console.SetCursorPosition(horizontalPosition, verticalPosition + j);
@@ -235,22 +302,25 @@ namespace Racesimulator
                         break;
                 }
             }
+
+            Console.SetCursorPosition(0, 0);
         }
 
-        private static string PlaceParticipant(String segment, SectionData sectiondata)
+        public static string PlaceParticipant(string segment, SectionData sectionData)
         {
-            if (segment.Contains("1") && sectiondata.Left != null)
+
+            if (segment.Contains("1") && sectionData.Left != null)
             {
-                segment = segment.Replace("1", sectiondata.Left.Name.Substring(0, 1));
+                segment = segment.Replace("1", sectionData.Left.Name.Substring(0, 1));
             }
             else
             {
                 segment = segment.Replace("1", " ");
             }
 
-            if (segment.Contains("2") && sectiondata.Right != null)
+            if (segment.Contains("2") && sectionData.Right != null)
             {
-                segment = segment.Replace("2", sectiondata.Right.Name.Substring(0, 1));
+                segment = segment.Replace("2", sectionData.Right.Name.Substring(0, 1));
             }
             else
             {
@@ -258,6 +328,11 @@ namespace Racesimulator
             }
 
             return segment;
+        }
+        public static void OnDriversChanged(object model, EventArgs e)
+        {
+            DriversChangedEventArgs driverEvent = (DriversChangedEventArgs)e; // fix for "no overload matches delegate"
+            DrawTrack(driverEvent.Track);
         }
     }
 }
