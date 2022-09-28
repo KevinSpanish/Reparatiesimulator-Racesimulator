@@ -24,6 +24,7 @@ namespace Controller
         private Timer _timer;
 
         public event EventHandler DriversChanged;
+        public event EventHandler NextRace;
 
         private int _roundsAmount = 2;
         private Dictionary<IParticipant, int> _rounds;
@@ -33,6 +34,7 @@ namespace Controller
         {
             Track = track;
             Participants = participants;
+
             _positions = new Dictionary<Section, SectionData>();
             _random = new Random(DateTime.Now.Millisecond);
             _roundsAmount = roundsAmount;
@@ -111,11 +113,22 @@ namespace Controller
             StartTime = DateTime.Now;
         }
 
+        public void CleanUp()
+        {
+            DriversChanged = null;
+            Console.Clear();
+        }
+
         public void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             if (_finished == Participants.Count)
             {
-                throw new Exception("Race Finished");
+                _timer.Enabled = false;
+
+                CleanUp();
+
+                NextRace?.Invoke(this, new EventArgs());
+
             } else
             {
                 var driverChanged = MoveParticipants();
