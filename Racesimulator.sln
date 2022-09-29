@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Racesimulator", "Racesimulator\Racesimulator.csproj", "{3064F50D-BEBE-4AF7-BCC9-72D968D45503}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Racesimulator", "Racesimulator\Racesimulator.csproj", "{3064F50D-BEBE-4AF7-BCC9-72D968D45503}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{E75B9D71-D207-4FB7-A143-545D08388EC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{E75B9D71-D207-4FB7-A143-545D08388EC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{44A7CB30-FC55-40E4-A00D-B69BFE00810E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controller", "Controller\Controller.csproj", "{44A7CB30-FC55-40E4-A00D-B69BFE00810E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerTest", "ControllerTest\ControllerTest.csproj", "{D816BE17-DBFF-43CB-AE5C-77A8F99997F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControllerTest", "ControllerTest\ControllerTest.csproj", "{D816BE17-DBFF-43CB-AE5C-77A8F99997F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
