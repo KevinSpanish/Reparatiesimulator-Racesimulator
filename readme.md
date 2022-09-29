@@ -6,7 +6,7 @@ Windesheim C# Racesimulator/Racesim assignment, 2nd year HBO-ICT OOSDD.
   <a href="http://forthebadge.com/"><img src="https://forthebadge.com/images/badges/0-percent-optimized.svg" alt="forthebadge"/></a>
 </p>
 
-Welcome, my fellow Windesheim student. ????? <br/>
+Welcome, my fellow Windesheim student. :mage: <br/>
 My guess is that you found this repository by searching for "Racesimulator" on this very website. <br/>
 Well, you're in luck, you found a racesimulator assignment from another student, congratulations. <br/>
 
@@ -19,4 +19,4 @@ And use the availible repositories as a way to see how other students tackled ce
 
 Anyway, I ain't your mum, if you want to copy all the work go ahead, your bad grade isn't my problem.
 
-okbai ??
+okbai :wave:
