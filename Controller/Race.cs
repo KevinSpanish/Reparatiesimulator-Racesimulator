@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Timers;
 using static Model.Section;
@@ -41,11 +42,11 @@ namespace Controller
             _rounds = new Dictionary<IParticipant, int>(); // ['participant' => amount]
 
             AddParticipantsPositions(Track, Participants);
-
             RandomizeEquipment();
 
             _timer = new Timer(500);
             _timer.Elapsed += OnTimedEvent;
+            //_timer.Elapsed += BreakRandomly;
 
             Start();
         }
@@ -66,9 +67,9 @@ namespace Controller
         {
             foreach (IParticipant participant in Participants)
             {
-                participant.Equipment.Quality = _random.Next();
-                participant.Equipment.Performance = _random.Next();
-                //participant.Equipment.Speed = _random.Next(5, 15);
+                participant.Equipment.Quality = _random.Next(20, 50);
+                participant.Equipment.Performance = _random.Next(1, 3);
+                participant.Equipment.Speed = _random.Next(5, 15);
             }
         }
 
@@ -135,11 +136,67 @@ namespace Controller
                 if (driverChanged)
                 {
                     _timer.Enabled = false;
+
                     DriversChanged?.Invoke(this, new DriversChangedEventArgs(Track));
                     _timer.Enabled = true;
                 }
             }
- 
+        }
+
+        public void BreakRandomly(object source, ElapsedEventArgs e)
+        {
+            var r = new Random();
+
+            if (Participants == null) return;
+            var i = r.Next(1, Participants.Count);
+            if (Participants.Count < i || i < 1) return;
+            i -= 1;
+            if (Participants[i] == null) return;
+            if (Participants[i]!.Finished) return;
+            if (!Participants[i]!.Equipment.IsBroken)
+            {
+                Participants[i]!.Equipment
+                    .IsBroken = true;
+            }
+            else
+            {
+                Participants[i]!.Equipment.IsBroken = false;
+                Participants[i]!.Equipment.Performance -= r.Next(0, 3);
+                Participants[i]!.Equipment.Quality -= r.Next(0, 4);
+            }
+        }
+
+        public void BreakRandomly(IParticipant participant)
+        {
+            //if (!participant.Equipment.IsBroken && _random.Next(0, 1000) < 40)
+            //{
+            //    if (!participant.Equipment.IsBroken)
+            //    {
+            //        participant.Equipment.IsBroken = true;
+            //        participant.Name = "!" + participant.Name;
+            //        participant.Equipment.Performance = 1;
+            //    }
+            //    else
+            //    {
+            //        participant.Equipment.IsBroken = false;
+            //        participant.Name = participant.Name.Trim('!');
+            //    }
+            //}
+
+            int chance = participant.Equipment.IsBroken ? 10 : 1;
+            IEquipment equipment = participant.Equipment;
+            int random = _random.Next(0, 100 - (equipment.Quality));
+            if (random <= chance)
+            {
+                if (!equipment.IsBroken)
+                {
+                    if (equipment.Speed > 20)
+                        equipment.Speed -= 10;
+                    equipment.Performance = 1;
+                }
+                
+                equipment.IsBroken = !equipment.IsBroken;
+            }
         }
 
         public void IncreaseParticipantRounds(IParticipant participant)
@@ -170,12 +227,12 @@ namespace Controller
             var rounds = _rounds[participant];
             if (rounds >= _roundsAmount)
             {
+                participant.Finished = true;
                 return true;
             }
 
             return false;
         }
-
 
         public void MoveParticipantsDepr()
         {
@@ -213,8 +270,10 @@ namespace Controller
                 SectionData data = GetSectionData(sections.Value);
                 if (data.Left != null)
                 {
+                    var equipment = data.Left.Equipment;
+                    BreakRandomly(data.Left);
 
-                    if (!HasFinished(data.Left))
+                    if (!equipment.IsBroken && !HasFinished(data.Left))
                     {
                         driverChanged = true;
                         SectionData nextData = GetSectionData((sections.Next ?? sections.List.First).Value);
@@ -252,18 +311,21 @@ namespace Controller
                         //}
                     } else
                     {
-                        if (data.Left != null)
-                        {
-                            driverChanged = true;
-                            data.Left = null;
-                        }
+                        //if (data.Left != null)
+                        //{
+                        //    driverChanged = true;
+                        //    data.Left = null;
+                        //}
                     }
 
                 }
 
                 if (data.Right != null)
                 {
-                    if (!HasFinished(data.Right))
+                    var equipment = data.Right.Equipment;
+                    BreakRandomly(data.Right);
+
+                    if (!equipment.IsBroken && !HasFinished(data.Right))
                     {
                         driverChanged = true;
                         SectionData nextData = GetSectionData((sections.Next ?? sections.List.First).Value);
@@ -302,10 +364,10 @@ namespace Controller
                     }
                     else
                     {
-                        if (data.Right != null) {
-                            driverChanged = true;
-                            data.Right = null;
-                        }
+                        //if (data.Right != null) {
+                        //    driverChanged = true;
+                        //    data.Right = null;
+                        //}
                     }
 
                 }

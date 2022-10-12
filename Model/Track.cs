@@ -14,7 +14,6 @@ namespace Model
 
         public int Rounds { get; set; }
 
-
         public Track(string name, SectionTypes[] sectionTypes)
         {
             Name = name;

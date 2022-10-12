@@ -24,9 +24,9 @@ namespace Controller
 
         public static void AddParticipants()
         {
-            Competition.Participants.Add(new Driver("Huey", 0, new Car(10, 100, 10, false), IParticipant.TeamColors.Red));
-            Competition.Participants.Add(new Driver("Dewey", 0, new Car(10, 80, 10, false), IParticipant.TeamColors.Blue));
-            Competition.Participants.Add(new Driver("Louie", 0, new Car(10, 60, 10, false), IParticipant.TeamColors.Green));
+            Competition.Participants.Add(new Driver("Huey", 0, new Car(), IParticipant.TeamColors.Red));
+            Competition.Participants.Add(new Driver("Dewey", 0, new Car(), IParticipant.TeamColors.Blue));
+            Competition.Participants.Add(new Driver("Louie", 0, new Car(), IParticipant.TeamColors.Green));
         }
 
         public static void AddTracks()
@@ -44,7 +44,7 @@ namespace Controller
                 SectionTypes.RightCorner,
                 SectionTypes.RightCorner
             });
-            //TokyoDrift.Rounds = 4;
+            TokyoDrift.Rounds = 4;
 
             Track GebouwX = new Track("Circuit gebouw X \"niet rennen in de gang straks stort de vloer nog in\"", new SectionTypes[] {
                 SectionTypes.Straight,
@@ -223,12 +223,12 @@ namespace Controller
                 SectionTypes.RightCorner
             });
 
-            Competition.Tracks.Enqueue(TokyoDrift);
-            Competition.Tracks.Enqueue(GebouwX);
-            Competition.Tracks.Enqueue(Mugello);
-            Competition.Tracks.Enqueue(Monza);
-            Competition.Tracks.Enqueue(GebouwT);
-            Competition.Tracks.Enqueue(Duckstad);
+            //Competition.AddTrack(TokyoDrift);
+            Competition.AddTrack(GebouwX);
+            Competition.AddTrack(Mugello);
+            //Competition.AddTrack(Monza);
+            Competition.AddTrack(GebouwT);
+            Competition.AddTrack(Duckstad);
         }
 
         public static void NextRace()

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Racesimulator
 {
@@ -312,7 +313,14 @@ namespace Racesimulator
 
             if (segment.Contains("1") && sectionData.Left != null)
             {
-                segment = segment.Replace("1", sectionData.Left.Name.Substring(0, 1));
+                if (sectionData.Left.Equipment.IsBroken)
+                {
+                    segment = segment.Replace("1", "!");
+                }
+                else
+                {
+                    segment = segment.Replace("1", sectionData.Left.Name.Substring(0, 1));
+                }
             }
             else
             {
@@ -321,7 +329,14 @@ namespace Racesimulator
 
             if (segment.Contains("2") && sectionData.Right != null)
             {
-                segment = segment.Replace("2", sectionData.Right.Name.Substring(0, 1));
+                if (sectionData.Right.Equipment.IsBroken)
+                {
+                    segment = segment.Replace("2", "!");
+                }
+                else
+                {
+                    segment = segment.Replace("2", sectionData.Right.Name.Substring(0, 1));
+                }
             }
             else
             {

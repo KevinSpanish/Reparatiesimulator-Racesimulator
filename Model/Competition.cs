@@ -25,5 +25,25 @@ namespace Model
             }
             return Tracks.Dequeue();
         }
+
+        public void AddTrack(Track track)
+        {
+            bool hasFinish = false;
+
+            foreach (Section section in track.Sections)
+            {
+                if (section.SectionType == Section.SectionTypes.Finish)
+                {
+                    hasFinish = true;
+                }
+            }
+
+            if (!hasFinish)
+            {
+                throw new ArgumentException($"Track {track.Name} has no finish section");
+            }
+
+            Tracks.Enqueue(track);
+        }
     }
 }

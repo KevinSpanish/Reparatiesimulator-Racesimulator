@@ -19,5 +19,7 @@ namespace Model
         public int Points { get; set; }
         public IEquipment Equipment { get; set; }
         public IParticipant.TeamColors TeamColor { get; set; }
+
+        public bool Finished { get; set; }
     }
 }
