@@ -3,7 +3,7 @@ Windesheim C# Racesimulator/Racesim assignment, 2nd year HBO-ICT OOSDD.
 
 <p align="center">
   <a href="http://forthebadge.com/" target="_blank"><img src="https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg" alt="forthebadge"/></a>
-  <a href="http://forthebadge.com/" target="_blank"><img src="https://forthebadge.com/images/badges/0-percent-optimized.svg" alt="forthebadge"/></a>
+  <a href="http://forthebadge.com/" target="_blank"><img src="https://forthebadge.com/images/badges/0-percent-optimized.svg" alt="forthebadge"/></a><br/>
   <a href="http://forthebadge.com/" target="_blank"><img src="https://forthebadge.com/images/badges/works-on-my-machine.svg" alt="forthebadge"/></a>
 </p>
 
