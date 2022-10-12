@@ -46,7 +46,6 @@ namespace Controller
 
             _timer = new Timer(500);
             _timer.Elapsed += OnTimedEvent;
-            //_timer.Elapsed += BreakRandomly;
 
             Start();
         }
@@ -143,45 +142,8 @@ namespace Controller
             }
         }
 
-        public void BreakRandomly(object source, ElapsedEventArgs e)
-        {
-            var r = new Random();
-
-            if (Participants == null) return;
-            var i = r.Next(1, Participants.Count);
-            if (Participants.Count < i || i < 1) return;
-            i -= 1;
-            if (Participants[i] == null) return;
-            if (Participants[i]!.Finished) return;
-            if (!Participants[i]!.Equipment.IsBroken)
-            {
-                Participants[i]!.Equipment
-                    .IsBroken = true;
-            }
-            else
-            {
-                Participants[i]!.Equipment.IsBroken = false;
-                Participants[i]!.Equipment.Performance -= r.Next(0, 3);
-                Participants[i]!.Equipment.Quality -= r.Next(0, 4);
-            }
-        }
-
         public void BreakRandomly(IParticipant participant)
         {
-            //if (!participant.Equipment.IsBroken && _random.Next(0, 1000) < 40)
-            //{
-            //    if (!participant.Equipment.IsBroken)
-            //    {
-            //        participant.Equipment.IsBroken = true;
-            //        participant.Name = "!" + participant.Name;
-            //        participant.Equipment.Performance = 1;
-            //    }
-            //    else
-            //    {
-            //        participant.Equipment.IsBroken = false;
-            //        participant.Name = participant.Name.Trim('!');
-            //    }
-            //}
 
             int chance = participant.Equipment.IsBroken ? 10 : 1;
             IEquipment equipment = participant.Equipment;
