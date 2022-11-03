@@ -149,7 +149,7 @@ namespace Racesimulator
             Console.WriteLine($"{Data.CurrentRace.Track.Rounds} rondjes");
 
             Data.CurrentRace.DriversChanged += OnDriversChanged;
-            Data.CurrentRace.NextRace += OnNextRace;
+            Data.CurrentRace.RaceEnded += OnNextRace;
 
             Track track = Data.CurrentRace.Track;
             DrawTrack(track);
@@ -347,13 +347,12 @@ namespace Racesimulator
 
             return segment;
         }
-        public static void OnDriversChanged(object model, EventArgs e)
+        public static void OnDriversChanged(object model, DriversChangedEventArgs e)
         {
-            DriversChangedEventArgs driverEvent = (DriversChangedEventArgs)e; // fix for "no overload matches delegate"
-            DrawTrack(driverEvent.Track);
+            DrawTrack(e.Track);
         }
 
-        public static void OnNextRace(object sender, EventArgs e)
+        public static void OnNextRace(object model)
         {
             Console.Clear();
 

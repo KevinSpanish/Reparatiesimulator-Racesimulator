@@ -117,11 +117,14 @@ namespace Controller
 
         public void CleanUp()
         {
-            if (DriversChanged.GetInvocationList() != null)
+            if (DriversChanged != null)
             {
-                foreach (var handler in DriversChanged.GetInvocationList())
+                if (DriversChanged.GetInvocationList() != null)
                 {
-                    DriversChanged -= (EventHandler<DriversChangedEventArgs>)handler;
+                    foreach (var handler in DriversChanged.GetInvocationList())
+                    {
+                        DriversChanged -= (EventHandler<DriversChangedEventArgs>)handler;
+                    }
                 }
             }
         }

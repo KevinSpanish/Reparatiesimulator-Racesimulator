@@ -46,7 +46,7 @@ namespace Controller
                 SectionTypes.RightCorner,
                 SectionTypes.RightCorner
             });
-            TokyoDrift.Rounds = 1;
+            TokyoDrift.Rounds = 4;
 
             Track GebouwX = new Track("Circuit gebouw X \"niet rennen in de gang straks stort de vloer nog in\"", new SectionTypes[] {
                 SectionTypes.Straight,
@@ -74,7 +74,6 @@ namespace Controller
                 SectionTypes.Straight,
                 SectionTypes.RightCorner,
             });
-            GebouwX.Rounds = 1;
 
             Track Mugello = new Track("Circuit Mugello", new SectionTypes[] {
                 SectionTypes.Straight,
@@ -242,12 +241,6 @@ namespace Controller
                 int rounds = nexttrack.Rounds;
                 CurrentRace = new Race(nexttrack, Competition.Participants, rounds);
             }
-        }
-
-        private static void OnRaceFinished(object model, EventArgs e)
-        {
-            Race race = (Race)model;
-            NextRace();
         }
     }
 }

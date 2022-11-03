@@ -19,7 +19,7 @@ namespace Wpf
         private static int _direction = 1; // 0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT
         private static readonly int _SectionSize = 100;
         private static int _positionX = 100;
-        private static int _positionY = 100;
+        private static int _positionY = 0;
         private static Race? _currentRace;
 
         public static void Initialize(Race? race)
