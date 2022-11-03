@@ -24,8 +24,10 @@ namespace Controller
 
         private Timer _timer;
 
-        public event EventHandler DriversChanged;
-        public event EventHandler NextRace;
+        public event EventHandler<DriversChangedEventArgs> DriversChanged;
+
+        public delegate void RaceEndedEvent(object model);
+        public event RaceEndedEvent RaceEnded;
 
         private int _roundsAmount = 2;
         private Dictionary<IParticipant, int> _rounds;
@@ -115,36 +117,42 @@ namespace Controller
 
         public void CleanUp()
         {
-            DriversChanged = null;
-            Console.Clear();
+            if (DriversChanged.GetInvocationList() != null)
+            {
+                foreach (var handler in DriversChanged.GetInvocationList())
+                {
+                    DriversChanged -= (EventHandler<DriversChangedEventArgs>)handler;
+                }
+            }
         }
 
         public void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             if (_finished == Participants.Count)
             {
-                _timer.Enabled = false;
+                _timer.Stop();
 
                 CleanUp();
 
-                NextRace?.Invoke(this, new EventArgs());
+                RaceEnded?.Invoke(this);
+                RaceEnded = null;
 
             } else
             {
                 var driverChanged = MoveParticipants();
                 if (driverChanged)
                 {
-                    _timer.Enabled = false;
+                    _timer.Stop();
 
                     DriversChanged?.Invoke(this, new DriversChangedEventArgs(Track));
-                    _timer.Enabled = true;
+
+                    _timer.Start();
                 }
             }
         }
 
         public void BreakRandomly(IParticipant participant)
         {
-
             int chance = participant.Equipment.IsBroken ? 10 : 1;
             IEquipment equipment = participant.Equipment;
             int random = _random.Next(0, 100 - (equipment.Quality));
@@ -194,32 +202,6 @@ namespace Controller
             }
 
             return false;
-        }
-
-        public void MoveParticipantsDepr()
-        {
-            SectionData nextSection = _positions.First().Value;
-
-            foreach (var section in _positions.Reverse())
-            {
-                SectionData currentSection = section.Value;
-
-                if (currentSection.Left != null)
-                {
-                    nextSection.Left = currentSection.Left;
-                    currentSection.Left = null;
-                }
-
-                if (currentSection.Right != null)
-                {
-                    nextSection.Right = currentSection.Right;
-                    currentSection.Right = null;
-                }
-
-                nextSection = currentSection;
-            }
-
-
         }
 
         public bool MoveParticipants()

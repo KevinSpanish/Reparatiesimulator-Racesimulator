@@ -238,6 +238,7 @@ namespace Racesimulator
                             }
                         }
 
+                        //TODO: Un-spaget this.
                         if (direction == 0) { direction++; horizontalPosition += 4; }
                         else if (direction == 1) { direction++; verticalPosition += 4; }
                         else if (direction == 2) { direction++; horizontalPosition -= 4; }
@@ -268,6 +269,7 @@ namespace Racesimulator
                             }
                         }
 
+                        //TODO: Un-spaget this.
                         if (direction == 0) { direction = 3; horizontalPosition -= 4; }
                         else if (direction == 1) { direction--; verticalPosition -= 4; }
                         else if (direction == 2) { direction--; horizontalPosition += 4; }

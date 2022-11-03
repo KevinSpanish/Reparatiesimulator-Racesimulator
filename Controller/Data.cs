@@ -14,6 +14,8 @@ namespace Controller
 
         public static Race CurrentRace { get; set; }
 
+        public static event EventHandler<NextRaceEventArgs>? NextRaceEvent;
+
         public static void Initialize()
         {
             Competition = new Competition();
@@ -44,7 +46,7 @@ namespace Controller
                 SectionTypes.RightCorner,
                 SectionTypes.RightCorner
             });
-            TokyoDrift.Rounds = 4;
+            TokyoDrift.Rounds = 1;
 
             Track GebouwX = new Track("Circuit gebouw X \"niet rennen in de gang straks stort de vloer nog in\"", new SectionTypes[] {
                 SectionTypes.Straight,
@@ -72,6 +74,7 @@ namespace Controller
                 SectionTypes.Straight,
                 SectionTypes.RightCorner,
             });
+            GebouwX.Rounds = 1;
 
             Track Mugello = new Track("Circuit Mugello", new SectionTypes[] {
                 SectionTypes.Straight,
@@ -239,6 +242,12 @@ namespace Controller
                 int rounds = nexttrack.Rounds;
                 CurrentRace = new Race(nexttrack, Competition.Participants, rounds);
             }
+        }
+
+        private static void OnRaceFinished(object model, EventArgs e)
+        {
+            Race race = (Race)model;
+            NextRace();
         }
     }
 }
