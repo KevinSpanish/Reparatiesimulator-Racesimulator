@@ -14,6 +14,8 @@ namespace Model
         public TeamColors TeamColor { get; set; }
         bool Finished { get; set; }
 
+        public int BrokenCount { get; set; }
+
         public enum TeamColors
         {
             Red,

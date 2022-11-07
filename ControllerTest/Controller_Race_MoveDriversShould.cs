@@ -34,10 +34,10 @@ namespace ControllerTest
 
             _race = new Race(track, new List<IParticipant>()
             {
-                new Driver("Driver1", 0, new Car(10, 100, 10, false), IParticipant.TeamColors.Yellow),
-                new Driver("Driver2", 0, new Car(10, 100, 10, false), IParticipant.TeamColors.Grey),
-                new Driver("Driver3", 0, new Car(10, 100, 10, false), IParticipant.TeamColors.Blue)
-            });
+                new Driver("Driver1", 0, new Car(), IParticipant.TeamColors.Red, 0),
+                new Driver("Driver2", 0, new Car(), IParticipant.TeamColors.Red, 0),
+                new Driver("HDriver3uey", 0, new Car(), IParticipant.TeamColors.Red, 0),
+        }, 0);
         }
 
         [Test]

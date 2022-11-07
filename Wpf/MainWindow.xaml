@@ -6,7 +6,20 @@
         xmlns:local="clr-namespace:Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:DataContext/>
+    </Window.DataContext>
     <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" VerticalAlignment="Top" Height="20">
+                <MenuItem Header="Menu">
+                    <MenuItem Header="RaceStatistics" Click="MenuItem_Open_RaceStatisticsWindow" />
+                    <MenuItem Header="CompetitionStatistics" Click="MenuItem_Open_CometitionStatisticsWindow" />
+                    <MenuItem Header="Close" Click="MenuItem_Exit_Click" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
         <Image Name="TrackImage" Source="/Straight.png" Margin="20" />
+        <!--<Label Content="{Binding TrackName, Mode=OneWay}" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="150"/>-->
     </Grid>
 </Window>

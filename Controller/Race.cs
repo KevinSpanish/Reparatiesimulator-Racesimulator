@@ -16,6 +16,7 @@ namespace Controller
     {
         public Track Track { get; set; }
         public List<IParticipant> Participants { get; set; }
+        public List<IParticipant> FinishedParticipants { get; set; }
         public DateTime StartTime { get; set; }
 
         private Random _random;
@@ -24,10 +25,13 @@ namespace Controller
 
         private Timer _timer;
 
-        public event EventHandler<DriversChangedEventArgs> DriversChanged;
+        public Timer Timer { get => _timer; }
 
-        public delegate void RaceEndedEvent(object model);
-        public event RaceEndedEvent RaceEnded;
+        public event EventHandler<DriversChangedEventArgs> DriversChanged;
+        public event EventHandler<NextRaceEventArgs> NextRace;
+
+        //public delegate void RaceEndedEvent(object model);
+        //public event RaceEndedEvent RaceEnded;
 
         private int _roundsAmount = 2;
         private Dictionary<IParticipant, int> _rounds;
@@ -37,6 +41,7 @@ namespace Controller
         {
             Track = track;
             Participants = participants;
+            FinishedParticipants = new List<IParticipant>();
 
             _positions = new Dictionary<Section, SectionData>();
             _random = new Random(DateTime.Now.Millisecond);
@@ -127,6 +132,8 @@ namespace Controller
                     }
                 }
             }
+
+            FinishedParticipants.Clear();
         }
 
         public void OnTimedEvent(object source, ElapsedEventArgs e)
@@ -137,10 +144,10 @@ namespace Controller
 
                 CleanUp();
 
-                RaceEnded?.Invoke(this);
-                RaceEnded = null;
+                NextRace.Invoke(this, new NextRaceEventArgs(Track));
 
-            } else
+            }
+            else
             {
                 var driverChanged = MoveParticipants();
                 if (driverChanged)
@@ -166,6 +173,7 @@ namespace Controller
                     if (equipment.Speed > 20)
                         equipment.Speed -= 10;
                     equipment.Performance = 1;
+                    participant.BrokenCount++;
                 }
                 
                 equipment.IsBroken = !equipment.IsBroken;
@@ -201,6 +209,12 @@ namespace Controller
             if (rounds >= _roundsAmount)
             {
                 participant.Finished = true;
+
+                FinishedParticipants.Add(participant);
+
+                int points = FinishedParticipants.Count();
+                participant.Points += points;
+
                 return true;
             }
 

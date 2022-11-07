@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf"
         mc:Ignorable="d"
-        Title="RaceStatistics" Height="450" Width="800">
+        Title="RaceStatistics" Height="400" Width="400">
+    <Window.DataContext>
+        <local:RaceStatisticsDataContext/>
+    </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
         
+        <Label Content="{Binding TrackName, Mode=OneWay}" Grid.Row="0" FontWeight="Bold" FontSize="16" />
+        
+        <Label Content="Participants" Grid.Row="2" FontSize="12" />
+        <ListView Name="ParticipantList" Grid.Row="3" ItemsSource="{Binding Participants}" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Performance" DisplayMemberBinding="{Binding Equipment.Performance}" />
+                    <GridViewColumn Header="Speed" DisplayMemberBinding="{Binding Equipment.Speed}" />
+                    <GridViewColumn Header="Quality" DisplayMemberBinding="{Binding Equipment.Quality}" />
+                    <GridViewColumn Header="Color" DisplayMemberBinding="{Binding TeamColor}" />
+                    <GridViewColumn Header="Is broken" DisplayMemberBinding="{Binding Equipment.IsBroken}" />
+                    <GridViewColumn Header="Broken #" DisplayMemberBinding="{Binding BrokenCount}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Label Content="Finished participants" Grid.Row="4" FontSize="12" />
+        <ListView Name="ParticipantListFinished" Grid.Row="5" ItemsSource="{Binding FinishedParticipants}" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Color" DisplayMemberBinding="{Binding TeamColor}" />
+                    <GridViewColumn Header="Broken #" DisplayMemberBinding="{Binding BrokenCount}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>

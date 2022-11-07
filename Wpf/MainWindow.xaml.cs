@@ -26,6 +26,9 @@ namespace Wpf
     /// 
     public partial class MainWindow : Window
     {
+        private RaceStatistics? _raceStatistics;
+        private CompetitionStatistics? _competitionStatistics;
+
         public MainWindow()
         {
             Data.Initialize();
@@ -36,7 +39,7 @@ namespace Wpf
         private void Initialize()
         {
             Data.CurrentRace.DriversChanged += OnDriversChanged;
-            Data.CurrentRace.RaceEnded += OnNextRace;
+            Data.CurrentRace.NextRace += OnNextRace;
 
             Visualization.Initialize(Data.CurrentRace);
         }
@@ -52,10 +55,28 @@ namespace Wpf
                 }));
         }
 
-        private void OnNextRace(object model)
+        private void OnNextRace(object model, NextRaceEventArgs e)
         {
             Data.NextRace();
             Initialize();
+        }
+
+        private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            Application.Current.Shutdown();
+        }
+
+        private void MenuItem_Open_CometitionStatisticsWindow(object sender, RoutedEventArgs e)
+        {
+            _competitionStatistics = new CompetitionStatistics();
+            _competitionStatistics.Show();
+        }
+
+        private void MenuItem_Open_RaceStatisticsWindow(object sender, RoutedEventArgs e)
+        {
+            _raceStatistics = new RaceStatistics();
+            _raceStatistics.Show();
         }
     }
 }
