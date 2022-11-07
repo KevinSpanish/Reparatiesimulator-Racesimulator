@@ -145,13 +145,13 @@ namespace Racesimulator
 
         public static void Initialize()
         {
-            Console.WriteLine($"Track: {Race.CurrentRace.Track.Name}");
-            Console.WriteLine($"{Race.CurrentRace.Track.Rounds} rondjes");
+            Console.WriteLine($"Track: {Data.CurrentRace.Track.Name}");
+            Console.WriteLine($"{Data.CurrentRace.Track.Rounds} rondjes");
 
-            Race.CurrentRace.DriversChanged += OnDriversChanged;
-            Race.CurrentRace.RaceEnded += OnNextRace;
+            Data.CurrentRace.DriversChanged += OnDriversChanged;
+            Data.CurrentRace.NextRace += OnNextRace;
 
-            Track track = Race.CurrentRace.Track;
+            Track track = Data.CurrentRace.Track;
             DrawTrack(track);
         }
 
@@ -171,7 +171,7 @@ namespace Racesimulator
             {
                 Section section = track.Sections.ElementAt(i);
                 string sectionType = section.SectionType.ToString();
-                SectionData sectiondata = Race.CurrentRace.GetSectionData(section);
+                SectionData sectiondata = Data.CurrentRace.GetSectionData(section);
 
                 switch (sectionType)
                 {
@@ -352,13 +352,13 @@ namespace Racesimulator
             DrawTrack(e.Track);
         }
 
-        public static void OnNextRace(object model)
+        public static void OnNextRace(object model, NextRaceEventArgs e)
         {
             Console.Clear();
 
-            Race.CurrentRace.CleanUp();
+            Data.CurrentRace.CleanUp();
 
-            Race.NextRace();
+            Data.NextRace();
 
             Console.Clear();
             Initialize();
