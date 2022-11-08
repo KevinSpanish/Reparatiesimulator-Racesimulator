@@ -36,18 +36,18 @@ namespace ControllerTest
             {
                 new Driver("Driver1", 0, new Car(), IParticipant.TeamColors.Red, 0),
                 new Driver("Driver2", 0, new Car(), IParticipant.TeamColors.Red, 0),
-                new Driver("HDriver3uey", 0, new Car(), IParticipant.TeamColors.Red, 0),
+                new Driver("Driver3", 0, new Car(), IParticipant.TeamColors.Red, 0),
         }, 0);
         }
 
         [Test]
-        public void MoveToNextSectionWhenDistanceTravelled()
+        public void MoveParticipants_MoveToNextSectionWhenFree()
         {
-            _race.Participants.RemoveAt(1);
-            _race.Participants[0].Equipment.Performance = 1;
-            _race.Participants[0].Equipment.Speed = 30;
-            Assert.That(_race.MoveParticipants(), Is.EqualTo(false));
-            Assert.That(_race.MoveParticipants(), Is.EqualTo(true));
+            _race.MoveParticipants();
+
+            SectionData data = _race.GetSectionData(_race.Track.Sections.ElementAt(0));
+            Assert.AreEqual(null, data.Left);
+            Assert.AreEqual(null, data.Right);
         }
     }
 }

@@ -37,6 +37,8 @@ namespace Wpf
 
         public CompetitionStatisticsDataContext() : this(Data.Competition.Participants)
         {
+            //TODO: Change when new race is invoked. Now the window needs to be reopened.
+
             ParticipantRankings = Data.Competition.Participants;
             NextTrack = Data.Competition.NextTrack();
             Data.CurrentRace.NextRace += OnRaceFinished;

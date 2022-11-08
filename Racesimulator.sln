@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controller", "Controller\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControllerTest", "ControllerTest\ControllerTest.csproj", "{D816BE17-DBFF-43CB-AE5C-77A8F99997F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf", "Wpf\Wpf.csproj", "{1D254D7F-FA99-4011-87CF-2C02D0466229}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf", "Wpf\Wpf.csproj", "{1D254D7F-FA99-4011-87CF-2C02D0466229}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

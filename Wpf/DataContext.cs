@@ -12,7 +12,16 @@ namespace Wpf
     public class DataContext : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        public string? TrackName => Data.CurrentRace?.Track.Name;
+        private string _trackname;
+        public string TrackName
+        {
+            get => _trackname;
+            set
+            {
+                _trackname = value;
+                OnPropertyChanged();
+            }
+        }
 
         public DataContext()
         {
@@ -23,6 +32,10 @@ namespace Wpf
         }
 
         public void OnDriversChanged(object s, DriversChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
+        }
+        private void OnPropertyChanged(string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
         }

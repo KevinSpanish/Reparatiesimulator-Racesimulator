@@ -57,8 +57,9 @@ namespace ControllerTest
             _competition.Tracks.Enqueue(track1);
             _competition.Tracks.Enqueue(track2);
 
-            Assert.AreEqual(_competition.Tracks.Dequeue(), track1);
-            Assert.AreEqual(_competition.Tracks.Dequeue(), track2);
+            _competition.NextTrack();
+            Track result = _competition.NextTrack();
+            Assert.AreEqual(track2, result);
         }
     }
 }

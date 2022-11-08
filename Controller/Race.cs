@@ -261,11 +261,11 @@ namespace Controller
                             }
                         }
 
-                        //else if (nextData.Right == null)
-                        //{
-                        //    nextData.Right = data.Left;
-                        //    data.Left = null;
-                        //}
+                        else if (nextData.Right == null)
+                        {
+                            nextData.Right = data.Left;
+                            data.Left = null;
+                        }
                         //else
                         //{
                         //    data.DistanceLeft = 50;
@@ -313,11 +313,11 @@ namespace Controller
                             }
                         }
 
-                        //else if (nextData.Left == null)
-                        //{
-                        //    nextData.Left = data.Right;
-                        //    data.Right = null;
-                        //}
+                        else if (nextData.Left == null)
+                        {
+                            nextData.Left = data.Right;
+                            data.Right = null;
+                        }
                         //else
                         //{
                         //    data.DistanceRight = 50;
@@ -325,7 +325,8 @@ namespace Controller
                     }
                     else
                     {
-                        //if (data.Right != null) {
+                        //if (data.Right != null)
+                        //{
                         //    driverChanged = true;
                         //    data.Right = null;
                         //}
