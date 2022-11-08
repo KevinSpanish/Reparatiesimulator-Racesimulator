@@ -20,6 +20,6 @@ And use the availible repositories as a way to see how other students tackled ce
 
 Anyway, I ain't your mum. If you want to copy all the work, go ahead, your bad grade isn't my problem.
 
-As to why the repository is called "Reparatiesimulator" well, this isn't my first time making this assignment. #TeamReparatieSemester
+As to why the repository is called "Reparatiesimulator" well, this isn't my first time making this assignment. Nor the second time. #TeamReparatieSemester #TeamReparatieSemesterTheSequel
 
 okbai :wave:
