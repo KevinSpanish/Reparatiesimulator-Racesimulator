@@ -23,6 +23,7 @@ Anyway, I ain't your mum. If you want to copy all the work, go ahead, your bad g
 As to why the repository is called "Reparatiesimulator" well, this isn't my first time making this assignment. Nor the second time. #TeamReparatieSemester #TeamReparatieSemesterTheSequel
 
 Up Next: REVERSI!
+
 <a href="https://discord.com/invite/pQPge3jUPn" target="_blank">Join the Reversi-Achterstands Discord proactively</a>
 
 okbai :wave:
