@@ -37,6 +37,15 @@ namespace ControllerTest
             {
                 SectionData sectionData = testRace.GetSectionData(section);
 
+                if (section.SectionType == SectionTypes.Finish && sectionData.Right != null)
+                {
+                    count++;
+                }
+                if (section.SectionType == SectionTypes.Finish && sectionData.Left != null)
+                {
+                    count++;
+                }
+
                 if (section.SectionType == SectionTypes.StartGrid && sectionData.Right != null)
                 {
                     count++;
@@ -47,7 +56,7 @@ namespace ControllerTest
                 }
             }
 
-            Assert.AreEqual(count, testRace.Participants.Count);
+            Assert.That(testRace.Participants.Count, Is.EqualTo(count));
         }
     }
 }

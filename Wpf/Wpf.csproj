@@ -8,108 +8,222 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Assets\Drivers\Red\**" />
+    <EmbeddedResource Remove="Assets\Drivers\Red\**" />
+    <None Remove="Assets\Drivers\Red\**" />
+    <Page Remove="Assets\Drivers\Red\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\Biem.png" />
-    <None Remove="Assets\Bowser.png" />
     <None Remove="Assets\Corner.png" />
-    <None Remove="Assets\Corner0.png" />
-    <None Remove="Assets\Corner1.png" />
-    <None Remove="Assets\Corner2.png" />
-    <None Remove="Assets\Corner3.png" />
-    <None Remove="Assets\Drivers\Red\Red-0-Corner.png" />
-    <None Remove="Assets\Drivers\Red\Red-0.png" />
-    <None Remove="Assets\Drivers\Red\Red-1-Corner.png" />
-    <None Remove="Assets\Drivers\Red\Red-1.png" />
-    <None Remove="Assets\Drivers\Red\Red-2-Corner.png" />
-    <None Remove="Assets\Drivers\Red\Red-2.png" />
-    <None Remove="Assets\Drivers\Red\Red-3-Corner.png" />
-    <None Remove="Assets\Drivers\Red\Red-3.png" />
+    <None Remove="Assets\Drivers\Blue-0-Corner.png" />
+    <None Remove="Assets\Drivers\Blue-0.png" />
+    <None Remove="Assets\Drivers\Blue-1-Corner.png" />
+    <None Remove="Assets\Drivers\Blue-1.png" />
+    <None Remove="Assets\Drivers\Blue-2-Corner.png" />
+    <None Remove="Assets\Drivers\Blue-2.png" />
+    <None Remove="Assets\Drivers\Blue-3-Corner.png" />
+    <None Remove="Assets\Drivers\Blue-3.png" />
+    <None Remove="Assets\Drivers\Green-0-Corner.png" />
+    <None Remove="Assets\Drivers\Green-0.png" />
+    <None Remove="Assets\Drivers\Green-1-Corner.png" />
+    <None Remove="Assets\Drivers\Green-1.png" />
+    <None Remove="Assets\Drivers\Green-2-Corner.png" />
+    <None Remove="Assets\Drivers\Green-2.png" />
+    <None Remove="Assets\Drivers\Green-3-Corner.png" />
+    <None Remove="Assets\Drivers\Green-3.png" />
+    <None Remove="Assets\Drivers\Grey-0-Corner.png" />
+    <None Remove="Assets\Drivers\Grey-0.png" />
+    <None Remove="Assets\Drivers\Grey-1-Corner.png" />
+    <None Remove="Assets\Drivers\Grey-1.png" />
+    <None Remove="Assets\Drivers\Grey-2-Corner.png" />
+    <None Remove="Assets\Drivers\Grey-2.png" />
+    <None Remove="Assets\Drivers\Grey-3-Corner.png" />
+    <None Remove="Assets\Drivers\Grey-3.png" />
+    <None Remove="Assets\Drivers\Red-0-Corner.png" />
+    <None Remove="Assets\Drivers\Red-0.png" />
+    <None Remove="Assets\Drivers\Red-1-Corner.png" />
+    <None Remove="Assets\Drivers\Red-1.png" />
+    <None Remove="Assets\Drivers\Red-2-Corner.png" />
+    <None Remove="Assets\Drivers\Red-2.png" />
+    <None Remove="Assets\Drivers\Red-3-Corner.png" />
+    <None Remove="Assets\Drivers\Red-3.png" />
+    <None Remove="Assets\Drivers\Yellow-0-Corner.png" />
+    <None Remove="Assets\Drivers\Yellow-0.png" />
+    <None Remove="Assets\Drivers\Yellow-1-Corner.png" />
+    <None Remove="Assets\Drivers\Yellow-1.png" />
+    <None Remove="Assets\Drivers\Yellow-2-Corner.png" />
+    <None Remove="Assets\Drivers\Yellow-2.png" />
+    <None Remove="Assets\Drivers\Yellow-3-Corner.png" />
+    <None Remove="Assets\Drivers\Yellow-3.png" />
     <None Remove="Assets\Finish.png" />
-    <None Remove="Assets\FinishHorizontal.png" />
-    <None Remove="Assets\FinishVertical.png" />
-    <None Remove="Assets\Koopa.png" />
-    <None Remove="Assets\Mario.png" />
     <None Remove="Assets\Start.png" />
-    <None Remove="Assets\StartHorizontal.png" />
-    <None Remove="Assets\StartVertical.png" />
     <None Remove="Assets\Straight.png" />
-    <None Remove="Assets\StraightHorizontal.png" />
-    <None Remove="Assets\StraightVertical.png" />
-    <None Remove="Assets\Toad.png" />
-    <None Remove="Assets\Yoshi.png" />
-    <None Remove="Straight.png" />
+    <None Remove="Assets\Track\Corner0.png" />
+    <None Remove="Assets\Track\Corner1.png" />
+    <None Remove="Assets\Track\Corner2.png" />
+    <None Remove="Assets\Track\Corner3.png" />
+    <None Remove="Assets\Track\FinishHorizontal.png" />
+    <None Remove="Assets\Track\FinishVertical.png" />
+    <None Remove="Assets\Track\StartHorizontal.png" />
+    <None Remove="Assets\Track\StartVertical.png" />
+    <None Remove="Assets\Track\StraightHorizontal.png" />
+    <None Remove="Assets\Track\StraightVertical.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\Biem.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Bowser.png">
+    <Content Include="Assets\Drivers\Blue-0-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Corner0.png">
+    <Content Include="Assets\Drivers\Blue-0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Corner1.png">
+    <Content Include="Assets\Drivers\Blue-1-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Corner2.png">
+    <Content Include="Assets\Drivers\Blue-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Corner3.png">
+    <Content Include="Assets\Drivers\Blue-2-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Drivers\Red\Red-0-Corner.png">
+    <Content Include="Assets\Drivers\Blue-2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Drivers\Red\Red-0.png">
+    <Content Include="Assets\Drivers\Blue-3-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Drivers\Red\Red-1-Corner.png">
+    <Content Include="Assets\Drivers\Blue-3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Drivers\Red\Red-1.png">
+    <Content Include="Assets\Drivers\Green-0-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Drivers\Red\Red-2-Corner.png">
+    <Content Include="Assets\Drivers\Green-0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Drivers\Red\Red-2.png">
+    <Content Include="Assets\Drivers\Green-1-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Drivers\Red\Red-3-Corner.png">
+    <Content Include="Assets\Drivers\Green-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Drivers\Red\Red-3.png">
+    <Content Include="Assets\Drivers\Green-2-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\FinishHorizontal.png">
+    <Content Include="Assets\Drivers\Green-2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\FinishVertical.png">
+    <Content Include="Assets\Drivers\Green-3-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Koopa.png">
+    <Content Include="Assets\Drivers\Green-3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Mario.png">
+    <Content Include="Assets\Drivers\Grey-0-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\StartHorizontal.png">
+    <Content Include="Assets\Drivers\Grey-0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\StartVertical.png">
+    <Content Include="Assets\Drivers\Grey-1-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\StraightHorizontal.png">
+    <Content Include="Assets\Drivers\Grey-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\StraightVertical.png">
+    <Content Include="Assets\Drivers\Grey-2-Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Toad.png">
+    <Content Include="Assets\Drivers\Grey-2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Yoshi.png">
+    <Content Include="Assets\Drivers\Grey-3-Corner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Grey-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Red-0-Corner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Red-0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Red-1-Corner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Red-1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Red-2-Corner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Red-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Red-3-Corner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Red-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Yellow-0-Corner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Yellow-0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Yellow-1-Corner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Yellow-1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Yellow-2-Corner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Yellow-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Yellow-3-Corner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Drivers\Yellow-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\Corner0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\Corner1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\Corner2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\Corner3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\FinishHorizontal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\FinishVertical.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\StartHorizontal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\StartVertical.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\StraightHorizontal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\StraightVertical.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -121,10 +235,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Controller\Controller.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Straight.png" />
   </ItemGroup>
 
 </Project>

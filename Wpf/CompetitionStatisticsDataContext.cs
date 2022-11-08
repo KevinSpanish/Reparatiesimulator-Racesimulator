@@ -40,7 +40,7 @@ namespace Wpf
             //TODO: Change when new race is invoked. Now the window needs to be reopened.
 
             ParticipantRankings = Data.Competition.Participants;
-            NextTrack = Data.Competition.NextTrack();
+            NextTrack = Data.Competition.Tracks.Peek();
             Data.CurrentRace.NextRace += OnRaceFinished;
         }
 
@@ -51,7 +51,7 @@ namespace Wpf
 
         public void OnRaceFinished(object sender, NextRaceEventArgs e)
         {
-            NextTrack = Data.Competition.NextTrack();
+            NextTrack = Data.Competition.Tracks.Peek();
             ParticipantRankings = SortParticipants(Data.Competition.Participants);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
         }

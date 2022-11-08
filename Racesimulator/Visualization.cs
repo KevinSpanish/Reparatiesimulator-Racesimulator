@@ -112,8 +112,8 @@ namespace Racesimulator
         private static string[] _corner0 =
             {
             "|  |",
-            "|1  ",
             "| 2 ",
+            "|1 ",
             "----"
         };
 
@@ -162,6 +162,8 @@ namespace Racesimulator
             int verticalPosition = 5;    //Add small margin,
             int horizontalPosition = 10; // otherwhise everything is so stuck to the edge
 
+            string[] returnSectionType = {};
+
             //TODO: Sections are not rotated correctly, a straight horizontal section places the participants wrongly 
             //      when the section is placed. This is probably because it uses the same section graphic as a normal horizontal piece.
             //      Can potentially be fixed by making a section graphic for every rotation (or just an inverted) and switch to this
@@ -181,14 +183,24 @@ namespace Racesimulator
                         {
                             Console.SetCursorPosition(horizontalPosition, verticalPosition + j);
 
-                            if (direction % 2 == 0)
+                            switch (direction)
                             {
-                                Console.Write(PlaceParticipant(_startVertical[j], sectiondata));
+                                case 0:
+                                    returnSectionType = _startVertical;
+                                    break;
+                                case 1:
+                                    returnSectionType = _startHorizontal;
+                                    break;
+                                case 2:
+                                    returnSectionType = _startVerticalInv;
+                                    break;
+                                case 3:
+                                    returnSectionType = _startHorizontalInv;
+                                    break;
                             }
-                            else
-                            {
-                                Console.Write(PlaceParticipant(_startHorizontal[j], sectiondata));
-                            }
+
+                            Console.Write(PlaceParticipant(returnSectionType[j], sectiondata));
+
                         }
 
                         horizontalPosition += 4;
@@ -200,14 +212,24 @@ namespace Racesimulator
                         {
                             Console.SetCursorPosition(horizontalPosition, verticalPosition + j);
 
-                            if (direction % 2 == 0)
+                            switch (direction)
                             {
-                                Console.Write(PlaceParticipant(_finishVertical[j], sectiondata));
+                                case 0:
+                                    returnSectionType = _finishVertical;
+                                    break;
+                                case 1:
+                                    returnSectionType = _finishHorizontal;
+                                    break;
+                                case 2:
+                                    returnSectionType = _finishVerticalInv;
+                                    break;
+                                case 3:
+                                    returnSectionType = _finishHorizontalInv;
+                                    break;
                             }
-                            else
-                            {
-                                Console.Write(PlaceParticipant(_finishHorizontal[j], sectiondata));
-                            }
+
+                            Console.Write(PlaceParticipant(returnSectionType[j], sectiondata));
+
                         }
 
                         horizontalPosition += 4;
@@ -222,20 +244,21 @@ namespace Racesimulator
                             switch (direction)
                             {
                                 case 0:
-                                    Console.Write(PlaceParticipant(_corner1[j], sectiondata));
+                                    returnSectionType = _corner1;
                                     break;
                                 case 1:
-                                    Console.Write(PlaceParticipant(_corner2[j], sectiondata));
-
+                                    returnSectionType = _corner2;
                                     break;
                                 case 2:
-                                    Console.Write(PlaceParticipant(_corner3[j], sectiondata));
-
+                                    returnSectionType = _corner3;
                                     break;
                                 case 3:
-                                    Console.Write(PlaceParticipant(_corner0[j], sectiondata));
+                                    returnSectionType = _corner0;
                                     break;
                             }
+
+                            Console.Write(PlaceParticipant(returnSectionType[j], sectiondata));
+
                         }
 
                         //TODO: Un-spaget this.
@@ -278,31 +301,39 @@ namespace Racesimulator
                         break;
                     default: //Straight 
 
-                        if (direction % 2 != 0)
+                        for (int j = 0; j < 4; j++)
                         {
-                            for (int j = 0; j < 4; j++)
+                            Console.SetCursorPosition(horizontalPosition, verticalPosition + j);
+
+                            switch (direction)
                             {
-                                Console.SetCursorPosition(horizontalPosition, verticalPosition + j);
-                                Console.Write(PlaceParticipant(_straightHorizontal[j], sectiondata));
+                                case 0:
+                                    returnSectionType = _straightVertical;
+                                    break;
+                                case 1:
+                                    returnSectionType = _straightHorizontal;
+                                    break;
+                                case 2:
+                                    returnSectionType = _straightVerticalInv;
+                                    break;
+                                case 3:
+                                    returnSectionType = _straightHorizontalInv;
+                                    break;
                             }
 
+                            Console.Write(PlaceParticipant(returnSectionType[j], sectiondata));
+                        }
+
+                        if (direction % 2 != 0)
+                        {
                             if (direction == 1) { horizontalPosition += 4; }
                             else { horizontalPosition -= 4; }
-
                         }
                         else
                         {
-                            for (int j = 0; j < 4; j++)
-                            {
-                                Console.SetCursorPosition(horizontalPosition, verticalPosition + j);
-                                Console.Write(PlaceParticipant(_straightVertical[j], sectiondata));
-                            }
-
-
                             if (direction == 2) { verticalPosition += 4; }
                             else { verticalPosition -= 4; }
                         }
-
                         break;
                 }
             }

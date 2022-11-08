@@ -19,7 +19,7 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <Image Name="TrackImage" Source="/Straight.png" Margin="20 60 20 20" />
+        <Image Name="TrackImage" Source="Assets/Track/FinishHorizontal.png" Margin="20 60 20 20" />
         <!--<Label Content="{Binding TrackName, Mode=OneWay}" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" />-->
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf"
         mc:Ignorable="d"
-        Title="CompetitionStatistics" Height="250" Width="400">
+        Title="CompetitionStatistics" Height="300" Width="400">
     <Window.DataContext>
         <local:CompetitionStatisticsDataContext/>
     </Window.DataContext>

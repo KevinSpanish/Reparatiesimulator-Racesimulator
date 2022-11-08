@@ -17,6 +17,8 @@ namespace Wpf
     public static class Visualization
     {
         private static int _direction = 1; // 0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT
+        private static int _nextDirection = _direction; 
+        private static bool _isCorner = false;
         private static readonly int _SectionSize = 100;
         private static int _positionX = 100;
         private static int _positionY = 0;
@@ -33,12 +35,11 @@ namespace Wpf
 
             Bitmap canvas = Images.EmptyBitmap(1280, 720);
             Graphics g = Graphics.FromImage(canvas);
-            
+
             foreach (var section in track.Sections)
             {
                 var sectionBitmap = Images.Load(GetSectionBitmap(section.SectionType, _direction));
                 g.DrawImage(sectionBitmap, _positionX, _positionY, _SectionSize, _SectionSize);
-
 
                 PlaceParticipants(section, g);
 
@@ -166,19 +167,89 @@ namespace Wpf
             switch (participant.TeamColor)
             {
                 case IParticipant.TeamColors.Red:
-                    ParticipantReturn = _red;
+                    switch (_direction)
+                    {
+                        case 0: // UP
+                            ParticipantReturn = _red0;
+                            break;
+                        case 1: // RIGHT
+                            ParticipantReturn = _red1;
+                            break;
+                        case 2: // DOWN
+                            ParticipantReturn = _red2;
+                            break;
+                        case 3: // LEFT
+                            ParticipantReturn = _red3;
+                            break;
+                    }
                     break;
                 case IParticipant.TeamColors.Green:
-                    ParticipantReturn = _green;
+                    switch (_direction)
+                    {
+                        case 0: // UP
+                            ParticipantReturn = _green0;
+                            break;
+                        case 1: // RIGHT
+                            ParticipantReturn = _green1;
+                            break;
+                        case 2: // DOWN
+                            ParticipantReturn = _green2;
+                            break;
+                        case 3: // LEFT
+                            ParticipantReturn = _green3;
+                            break;
+                    }
                     break;
                 case IParticipant.TeamColors.Yellow:
-                    ParticipantReturn = _yellow;
+                    switch (_direction)
+                    {
+                        case 0: // UP
+                            ParticipantReturn = _yellow0;
+                            break;
+                        case 1: // RIGHT
+                            ParticipantReturn = _yellow1;
+                            break;
+                        case 2: // DOWN
+                            ParticipantReturn = _yellow2;
+                            break;
+                        case 3: // LEFT
+                            ParticipantReturn = _yellow3;
+                            break;
+                    }
                     break;
                 case IParticipant.TeamColors.Grey:
-                    ParticipantReturn = _grey;
+                    switch (_direction)
+                    {
+                        case 0: // UP
+                            ParticipantReturn = _grey0;
+                            break;
+                        case 1: // RIGHT
+                            ParticipantReturn = _grey1;
+                            break;
+                        case 2: // DOWN
+                            ParticipantReturn = _grey2;
+                            break;
+                        case 3: // LEFT
+                            ParticipantReturn = _grey3;
+                            break;
+                    }
                     break;
                 case IParticipant.TeamColors.Blue:
-                    ParticipantReturn = _blue;
+                    switch (_direction)
+                    {
+                        case 0: // UP
+                            ParticipantReturn = _blue0;
+                            break;
+                        case 1: // RIGHT
+                            ParticipantReturn = _blue1;
+                            break;
+                        case 2: // DOWN
+                            ParticipantReturn = _blue2;
+                            break;
+                        case 3: // LEFT
+                            ParticipantReturn = _blue3;
+                            break;
+                    }
                     break;
             }
 
@@ -249,22 +320,61 @@ namespace Wpf
 
         #region graphics
 
-        private const string _startHor = @".\Assets\StartHorizontal.png";
-        private const string _startVer = @".\Assets\StartVertical.png";
-        private const string _finishHor = @".\Assets\FinishHorizontal.png";
-        private const string _finishVer = @".\Assets\FinishVertical.png";
-        private const string _straightHor = @".\Assets\StraightHorizontal.png";
-        private const string _straightVer = @".\Assets\StraightVertical.png";
-        private const string _corner0 = @".\Assets\Corner0.png";
-        private const string _corner1 = @".\Assets\Corner1.png";
-        private const string _corner2 = @".\Assets\Corner2.png";
-        private const string _corner3 = @".\Assets\Corner3.png";
+        private const string _startHor = @".\Assets\Track\StartHorizontal.png";
+        private const string _startVer = @".\Assets\Track\StartVertical.png";
+        private const string _finishHor = @".\Assets\Track\FinishHorizontal.png";
+        private const string _finishVer = @".\Assets\Track\FinishVertical.png";
+        private const string _straightHor = @".\Assets\Track\StraightHorizontal.png";
+        private const string _straightVer = @".\Assets\Track\StraightVertical.png";
+        private const string _corner0 = @".\Assets\Track\Corner0.png";
+        private const string _corner1 = @".\Assets\Track\Corner1.png";
+        private const string _corner2 = @".\Assets\Track\Corner2.png";
+        private const string _corner3 = @".\Assets\Track\Corner3.png";
 
-        private const string _red = @".\Assets\Mario.png";
-        private const string _green = @".\Assets\Yoshi.png";
-        private const string _yellow = @".\Assets\Bowser.png";
-        private const string _grey = @".\Assets\Koopa.png";
-        private const string _blue = @".\Assets\Toad.png";
+        private const string _red0 = @".\Assets\Drivers\Red-0.png";
+        private const string _red0_turn = @".\Assets\Drivers\Red-0-Corner.png";
+        private const string _red1 = @".\Assets\Drivers\Red-1.png";
+        private const string _red1_turn = @".\Assets\Drivers\Red-1-Corner.png";
+        private const string _red2 = @".\Assets\Drivers\Red-2.png";
+        private const string _red2_turn = @".\Assets\Drivers\Red-2-Corner.png";
+        private const string _red3 = @".\Assets\Drivers\Red-3.png";
+        private const string _red3_turn = @".\Assets\Drivers\Red-3-Corner.png";
+
+        private const string _green0 = @".\Assets\Drivers\Green-0.png";
+        private const string _green0_turn = @".\Assets\Drivers\Green-0-Corner.png";
+        private const string _green1 = @".\Assets\Drivers\Green-1.png";
+        private const string _green1_turn = @".\Assets\Drivers\Green-1-Corner.png";
+        private const string _green2 = @".\Assets\Drivers\Green-2.png";
+        private const string _green2_turn = @".\Assets\Drivers\Green-2-Corner.png";
+        private const string _green3 = @".\Assets\Drivers\Green-3.png";
+        private const string _green3_turn = @".\Assets\Drivers\Green-3-Corner.png";
+
+        private const string _yellow0 = @".\Assets\Drivers\Yellow-0.png";
+        private const string _yellow0_turn = @".\Assets\Drivers\Yellow-0-Corner.png";
+        private const string _yellow1 = @".\Assets\Drivers\Yellow-1.png";
+        private const string _yellow1_turn = @".\Assets\Drivers\Yellow-1-Corner.png";
+        private const string _yellow2 = @".\Assets\Drivers\Yellow-2.png";
+        private const string _yellow2_turn = @".\Assets\Drivers\Yellow-2-Corner.png";
+        private const string _yellow3 = @".\Assets\Drivers\Yellow-3.png";
+        private const string _yellow3_turn = @".\Assets\Drivers\Yellow-3-Corner.png";
+
+        private const string _grey0 = @".\Assets\Drivers\Grey-0.png";
+        private const string _grey0_turn = @".\Assets\Drivers\Grey-0-Corner.png";
+        private const string _grey1 = @".\Assets\Drivers\Grey-1.png";
+        private const string _grey1_turn = @".\Assets\Drivers\Grey-1-Corner.png";
+        private const string _grey2 = @".\Assets\Drivers\Grey-2.png";
+        private const string _grey2_turn = @".\Assets\Drivers\Grey-2-Corner.png";
+        private const string _grey3 = @".\Assets\Drivers\Grey-3.png";
+        private const string _grey3_turn = @".\Assets\Drivers\Grey-3-Corner.png";
+
+        private const string _blue0 = @".\Assets\Drivers\Blue-0.png";
+        private const string _blue0_turn = @".\Assets\Drivers\Blue-0-Corner.png";
+        private const string _blue1 = @".\Assets\Drivers\Blue-1.png";
+        private const string _blue1_turn = @".\Assets\Drivers\Blue-1-Corner.png";
+        private const string _blue2 = @".\Assets\Drivers\Blue-2.png";
+        private const string _blue2_turn = @".\Assets\Drivers\Blue-2-Corner.png";
+        private const string _blue3 = @".\Assets\Drivers\Blue-3.png";
+        private const string _blue3_turn = @".\Assets\Drivers\Blue-3-Corner.png";
 
         private const string _broken = @".\Assets\Biem.png";
 

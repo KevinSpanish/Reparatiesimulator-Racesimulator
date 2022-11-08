@@ -40,7 +40,7 @@ namespace Wpf
             {
                 _cache.Add(key, new Bitmap(width, height));
                 Graphics graphics = Graphics.FromImage(_cache[key]);
-                graphics.FillRectangle(new SolidBrush(Color.Gray), 0, 0, width, height);
+                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, width, height);
             }
 
             return (Bitmap)_cache[key].Clone();
